@@ -44,10 +44,11 @@ class ViewController: UIViewController {
         //observeEventType: it can do anything u want to do to the firebase
         firebase.observeEventType(FEventType.Value, withBlock: {(snapshot: FDataSnapshot!) -> Void in
             NSLog("Firebase Observer Calle")
-            print(snapshot.value)
             //it can change the firebase's value with the code
             
-            self.textLabel.text = snapshot.value as! String
+            self.textLabel.text = snapshot.value as? String
+            //snapshot is a shot of the current firebase
+            print(snapshot)
             
         })
         
