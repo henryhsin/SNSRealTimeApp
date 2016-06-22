@@ -10,6 +10,8 @@ import UIKit
 import Firebase
 
 class ViewController: UIViewController {
+    @IBOutlet weak var textLabel: UILabel!
+    
     let firebase = Firebase(url: "https://snsrealtimeapp-16145.firebaseio.com/")
 
     override func viewDidLoad() {
@@ -39,7 +41,9 @@ class ViewController: UIViewController {
             NSLog("Firebase Observer Calle")
             print(snapshot.value)
             //it can change the firebase's value with the code
-            self.firebase.setValue("GG")
+            
+            self.textLabel.text = snapshot.value as! String
+            
         })
         
         
