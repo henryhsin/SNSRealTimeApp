@@ -15,18 +15,17 @@ class ViewController: UIViewController {
     @IBOutlet weak var firebaseTextField: UITextField!
     
     @IBAction func sendMessage(sender: UIButton) {
-        firebase.setValue(firebaseTextField.text)
+        
+        firebase.childByAppendingPath("User").childByAppendingPath("name").setValue(firebaseTextField.text)
+        
+        firebase.childByAppendingPath("User").childByAppendingPath("isOnline").setValue("true")
+        
+
     }
     let firebase = Firebase(url: "https://snsrealtimeapp-16145.firebaseio.com/")
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        firebase.childByAppendingPath("Users").childByAppendingPath("name").setValue("HsinHan")
-        
-        firebase.childByAppendingPath("Users").childByAppendingPath("email").setValue("hooy123456@gmail.com")
-        firebase.childByAppendingPath("Users").childByAppendingPath("isOnline").setValue("false")
-        
         
         
         
@@ -59,7 +58,7 @@ class ViewController: UIViewController {
         firebase.observeEventType(FEventType.Value, withBlock: {(snapshot: FDataSnapshot!) -> Void in
             NSLog("Firebase Observer Calle")
             //it can change the firebase's value with the code
-            
+            //walthough we want to parse the snapshot, it was json type not String ,so we can't parse it
             self.textLabel.text = snapshot.value as? String
             //snapshot is a shot of the current firebase
             print(snapshot)
