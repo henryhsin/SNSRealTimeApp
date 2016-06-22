@@ -21,6 +21,20 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        firebase.childByAppendingPath("Users").childByAppendingPath("name").setValue("HsinHan")
+        
+        firebase.childByAppendingPath("Users").childByAppendingPath("email").setValue("hooy123456@gmail.com")
+        firebase.childByAppendingPath("Users").childByAppendingPath("isOnline").setValue("false")
+        
+        
+        
+        
+        
+        
+        
+        
+        
         //當你的Firebase有任何更動時，就可以用這個func去做事情，在這裡我們只是單純的把它print出來
         //一開始這個function並沒有work，後來把資料庫的read/write都設為true之後便解決了
         /*Firebase console -> database -> rule
