@@ -27,42 +27,12 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        
-        
-        
-        
-        
-        
-        //當你的Firebase有任何更動時，就可以用這個func去做事情，在這裡我們只是單純的把它print出來
-        //一開始這個function並沒有work，後來把資料庫的read/write都設為true之後便解決了
-        /*Firebase console -> database -> rule
- {
- "rules": {
- ".read": true,
- ".write": true
- }
- }
- */
-        
-        
-//        firebase.observeEventType(FEventType.Value){(snapshot: FDataSnapshot!)-> Void in
-//            
-//            NSLog("Firebase Observer Calle")
-//            print(snapshot.value)
-//            
-//            self.firebase.setValue("GG")
-//        }
-        
-        //observeEventType: it can do anything u want to do to the firebase
         firebase.observeEventType(FEventType.Value, withBlock: {(snapshot: FDataSnapshot!) -> Void in
-            NSLog("Firebase Observer Calle")
-            //it can change the firebase's value with the code
-            //walthough we want to parse the snapshot, it was json type not String ,so we can't parse it
-            self.textLabel.text = snapshot.value as? String
-            //snapshot is a shot of the current firebase
-            print(snapshot)
-            
+            if let snap = snapshot.value["User"]{
+                if let name = snap?.objectForKey("name") as? String{
+                    self.textLabel.text = name
+                }
+            }
         })
         
         
