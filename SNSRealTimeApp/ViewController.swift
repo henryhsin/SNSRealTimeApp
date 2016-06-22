@@ -12,6 +12,11 @@ import Firebase
 class ViewController: UIViewController {
     @IBOutlet weak var textLabel: UILabel!
     
+    @IBOutlet weak var firebaseTextField: UITextField!
+    
+    @IBAction func sendMessage(sender: UIButton) {
+        firebase.setValue(firebaseTextField.text)
+    }
     let firebase = Firebase(url: "https://snsrealtimeapp-16145.firebaseio.com/")
 
     override func viewDidLoad() {

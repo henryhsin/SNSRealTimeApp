@@ -23,14 +23,31 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PWy-aY-SJm">
+                                <rect key="frame" x="20" y="228" width="560" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JaJ-5j-s2r">
+                                <rect key="frame" x="250" y="302" width="101" height="30"/>
+                                <state key="normal" title="Send Message"/>
+                                <connections>
+                                    <action selector="sendMessage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="klx-Us-sQl"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="PWy-aY-SJm" secondAttribute="trailing" constant="20" id="CaW-8r-68O"/>
+                            <constraint firstItem="PWy-aY-SJm" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="Mth-ck-ZFR"/>
+                            <constraint firstItem="JaJ-5j-s2r" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="R9V-id-tKf"/>
                             <constraint firstItem="JyE-LQ-5aK" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="cKw-Gx-bNm"/>
                             <constraint firstItem="JyE-LQ-5aK" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="fli-Hf-r9P"/>
+                            <constraint firstItem="PWy-aY-SJm" firstAttribute="top" secondItem="JyE-LQ-5aK" secondAttribute="bottom" constant="121" id="t18-a0-aBh"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="firebaseTextField" destination="PWy-aY-SJm" id="cpJ-mW-b1u"/>
                         <outlet property="textLabel" destination="JyE-LQ-5aK" id="EYQ-4B-CKO"/>
                     </connections>
                 </viewController>
