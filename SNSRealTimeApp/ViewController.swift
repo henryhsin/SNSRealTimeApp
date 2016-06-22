@@ -17,8 +17,8 @@ class ViewController: UIViewController {
     @IBAction func sendMessage(sender: UIButton) {
         
         firebase.childByAppendingPath("User").childByAppendingPath("name").setValue(firebaseTextField.text)
-        
-        firebase.childByAppendingPath("User").childByAppendingPath("isOnline").setValue("true")
+        //because true is a bool value, we can't add "" to it
+        firebase.childByAppendingPath("User").childByAppendingPath("isOnline").setValue(true)
         
 
     }
@@ -31,6 +31,14 @@ class ViewController: UIViewController {
             if let snap = snapshot.value["User"]{
                 if let name = snap?.objectForKey("name") as? String{
                     self.textLabel.text = name
+                }
+                
+                if let isOnline = snap?.objectForKey("isOnline") as? Bool{
+                    if isOnline{
+                        self.view.backgroundColor = UIColor.greenColor()
+                    }else{
+                        self.view.backgroundColor = UIColor.redColor()
+                    }
                 }
             }
         })
